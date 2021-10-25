@@ -1,19 +1,25 @@
-import { TextField } from "@mui/material";
+import { MenuItem, TextField } from "@mui/material";
 import { useField } from "formik";
 import React from "react";
 
-const FormField = ({ label, ...props }) => {
+const FormField = ({ label, data, ...props }) => {
   const [field, meta] = useField(props);
 
   return (
     <TextField
-      fullWidth
       label={label}
       {...field}
       {...props}
       error={meta.touched && Boolean(meta.error)}
       helperText={meta.touched && meta.error}
-    />
+      margin="normal"
+    >
+      {data
+        ? data.map((profession) => (
+            <MenuItem value={profession}>{profession}</MenuItem>
+          ))
+        : null}
+    </TextField>
   );
 };
 

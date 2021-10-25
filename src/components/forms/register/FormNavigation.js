@@ -4,8 +4,8 @@ import React from "react";
 const FormNavigation = (props) => {
   return (
     <div>
-      {props.hasPrevios && (
-        <Button variant="contained" onClick={props.onBackClick}>
+      {props.hasPrevious && (
+        <Button variant="contained" type="button" onClick={props.onBackClick}>
           Back
         </Button>
       )}
