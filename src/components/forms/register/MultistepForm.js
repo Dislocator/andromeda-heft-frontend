@@ -36,18 +36,13 @@ const MultistepForm = ({ children, initialValues, onSubmit }) => {
   return (
     <div>
       <Formik
-        initialValues={{
-          name: "",
-        }}
-        onSubmit={(values) => {
-          alert(JSON.stringify(values, null, 2));
-        }}
+        initialValues={snapshot}
+        onSubmit={handleSubmit}
         validationSchema={step.props.validationSchema}
       >
         {(formik) => (
           <Form>
             {step}
-
             <FormNavigation
               isLastStep={isLastStep}
               hasPrevious={currentStep > 0}
