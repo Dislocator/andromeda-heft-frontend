@@ -1,12 +1,13 @@
 import React from "react";
-import { Formik } from "formik";
-import { Button, TextField } from "@mui/material";
+import { FieldArray, Formik } from "formik";
+import { Button, Stack, TextField } from "@mui/material";
 import * as yup from "yup";
 import FormField from "../FormField";
 import MultistepForm, { FormStep } from "./MultistepForm";
 import { Box } from "@mui/system";
 import FormSelect from "../FormSelect";
 import DatePicker from "../DatePicker";
+import KeywordsForm from "../keywords/KeywordsForm";
 const professions = ["prof1", "prof2", "prof3"];
 
 const validationSchema = yup.object({
@@ -19,12 +20,11 @@ const validationSchema = yup.object({
     .string()
     .oneOf(professions)
     .required("profession is required"),
-  learningStartDate: yup.string().required("learningStartDate is required"),
-  learningFinishDate: yup.string().required("learningFinishDate is required"),
+  learningStartDate: yup.date().required("learningStartDate is required"),
+  learningFinishDate: yup.date().required("learningFinishDate is required"),
 });
 const validationSchemaProfession = yup.object({
-  profession: yup.string().required("profession is required"),
-  subject: yup.string().required("subject is required"),
+  keywords: yup.array().nullable(),
 });
 
 const RegisterForm = () => {
@@ -32,15 +32,16 @@ const RegisterForm = () => {
     <>
       <MultistepForm
         initialValues={{
-          firstName: "",
-          lastName: "",
-          email: "",
-          profession: "",
-          company: "",
-          chiefName: "",
-          learningStartDate: "",
-          learningFinishDate: "",
-          date: new Date("2014-08-18T21:11:54"),
+          firstName: "a",
+          lastName: "a",
+          email: "a",
+          profession: "prof1",
+          company: "a",
+          chiefName: "a",
+          keyword: "a",
+          keywords: ["asd"],
+          learningStartDate: new Date(),
+          learningFinishDate: new Date(),
         }}
         onSubmit={(values) => {
           alert(JSON.stringify(values, null, 2));
@@ -53,29 +54,30 @@ const RegisterForm = () => {
           }}
           validationSchema={validationSchema}
         >
-          <Box style={{ display: "flex", flexDirection: "column" }}>
+          <Stack
+            spacing={3}
+            style={{ display: "flex", flexDirection: "column" }}
+          >
             <FormField name="firstName" label="Name" />
             <FormField name="lastName" label="Lastname" />
             <FormField name="email" label="Email" />
             <FormField name="company" label="Firma" />
             <FormField name="chiefName" label="Ausbilder" />
-            <FormField name="learningStartDate" label="Ausbildungsbeginn" />
-            <FormField name="learningFinishDate" label="Ausbildungsende" />
             <FormField
               name="profession"
               data={professions}
               label="Profession"
               select={true}
             />
-            <DatePicker name="date" label="Date" />
-          </Box>
+            <DatePicker name="learningStartDate" label="Ausbildungsbeginn" />
+            <DatePicker name="learningFinishDate" label="Ausbildungsende" />
+          </Stack>
         </FormStep>
         <FormStep
           stepName="Personal"
           validationSchema={validationSchemaProfession}
         >
-          <FormField name="profession" label="Profession" />
-          <FormField name="subject" label="Subject" />
+          <KeywordsForm name="keywords" label="keywords" />
         </FormStep>
       </MultistepForm>
     </>

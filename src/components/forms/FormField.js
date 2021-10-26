@@ -12,7 +12,6 @@ const FormField = ({ label, data, ...props }) => {
       {...props}
       error={meta.touched && Boolean(meta.error)}
       helperText={meta.touched && meta.error}
-      margin="normal"
     >
       {data
         ? data.map((profession) => (
