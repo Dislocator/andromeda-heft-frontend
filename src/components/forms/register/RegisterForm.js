@@ -8,6 +8,7 @@ import { Box } from "@mui/system";
 import FormSelect from "../FormSelect";
 import DatePicker from "../DatePicker";
 import KeywordsForm from "../keywords/KeywordsForm";
+import SchoolInfoForm from "../../schoolInfo/SchoolInfoForm";
 const professions = ["prof1", "prof2", "prof3"];
 
 const validationSchema = yup.object({
@@ -39,7 +40,8 @@ const RegisterForm = () => {
           company: "a",
           chiefName: "a",
           keyword: "a",
-          keywords: ["asd"],
+          keywords: [""],
+          subjects: [""],
           learningStartDate: new Date(),
           learningFinishDate: new Date(),
         }}
@@ -47,13 +49,7 @@ const RegisterForm = () => {
           alert(JSON.stringify(values, null, 2));
         }}
       >
-        <FormStep
-          stepName="Personal"
-          onSubmit={(values) => {
-            alert(JSON.stringify(values, null, 2));
-          }}
-          validationSchema={validationSchema}
-        >
+        <FormStep stepName="Personal" validationSchema={validationSchema}>
           <Stack
             spacing={3}
             style={{ display: "flex", flexDirection: "column" }}
@@ -78,6 +74,9 @@ const RegisterForm = () => {
           validationSchema={validationSchemaProfession}
         >
           <KeywordsForm name="keywords" label="keywords" />
+        </FormStep>
+        <FormStep stepName="SchoolInfo">
+          <KeywordsForm name="subjects" label="Fach hinzufügen..." />
         </FormStep>
       </MultistepForm>
     </>

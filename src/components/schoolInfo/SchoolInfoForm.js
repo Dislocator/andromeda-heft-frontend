@@ -1,7 +1,7 @@
 import { Button, Grid, MenuItem, TextField, Typography } from "@mui/material";
 import { Field, FieldArray, useField } from "formik";
 import React from "react";
-import FormField from "../FormField";
+import FormField from "../forms/FormField";
 
 const KeywordsForm = ({ label, data, ...props }) => {
   const [field, meta, helpers] = useField(props);
@@ -21,7 +21,7 @@ const KeywordsForm = ({ label, data, ...props }) => {
     >
       {({ push, remove }) => (
         <React.Fragment>
-          <Typography>{field.name}</Typography>
+          <Typography>Keywords</Typography>
           <Button onClick={() => push("")}>Add</Button>
 
           {field.value.map((_, index) => (
