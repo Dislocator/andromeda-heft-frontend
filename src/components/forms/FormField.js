@@ -11,8 +11,7 @@ const FormField = ({ label, data, ...props }) => {
       {...field}
       {...props}
       error={meta.touched && Boolean(meta.error)}
-      helperText={meta.touched && meta.error}
-      margin="normal"
+      helperText={meta.touched && meta.error ? `${meta.error}` : " "} //" " equalizes spacing if no error
     >
       {data
         ? data.map((profession) => (

@@ -6,15 +6,24 @@ import React from "react";
 import { useField } from "formik";
 
 const DatePicker = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
+  const [field, meta, helpers] = useField(props);
+  console.log(field);
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DesktopDatePicker
-        label={label}
         inputFormat="MM/dd/yyyy"
-        {...field}
-        {...props}
-        renderInput={(params) => <TextField {...params} />}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            {...field}
+            {...props}
+            label={label}
+            helperText={meta.touched && meta.error}
+            error={meta.touched && Boolean(meta.error)}
+          />
+        )}
+        onChange={(val) => helpers.setValue(val)}
+        margin="normal"
       />
     </LocalizationProvider>
   );
