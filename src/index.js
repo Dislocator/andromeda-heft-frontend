@@ -3,11 +3,11 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import Layout from "./components/forms/register/Layout";
+import FormikContainer from "./components/forms/FormikContainer";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Layout />
+    <FormikContainer />
   </React.StrictMode>,
   document.getElementById("root")
 );
