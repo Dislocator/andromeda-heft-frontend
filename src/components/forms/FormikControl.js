@@ -3,6 +3,7 @@ import DatePicker from "./old/DatePicker";
 import InputField from "./InputFields/InputField/InputField";
 import DateField from "./InputFields/DateField/DateField";
 import TagsField from "./InputFields/TagsField/TagsField";
+import SchoolDaysField from "./InputFields/SchoolDaysField/SchoolDaysField";
 // import DatePicker from "./InputFields/DatePicker/DatePicker";
 
 const FormikControl = (props) => {
@@ -18,6 +19,8 @@ const FormikControl = (props) => {
       return <DateField {...args} />;
     case "tags":
       return <TagsField {...args} />;
+    case "schoolDays":
+      return <SchoolDaysField {...args} />;
     default:
       return null;
   }

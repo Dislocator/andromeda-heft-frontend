@@ -6,6 +6,7 @@ const InputField = ({ label, data, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <TextField
+      fullWidth
       label={label}
       {...field}
       {...props}

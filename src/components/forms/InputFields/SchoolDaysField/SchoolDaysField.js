@@ -9,7 +9,7 @@ import {
 import { Field, FieldArray, useField } from "formik";
 import React, { useRef } from "react";
 // import InputField from "../InputField/InputField";
-const TagsField = ({ label, data, ...props }) => {
+const SchoolDaysField = ({ label, data, ...props }) => {
   const [field, meta, helpers] = useField(props);
   console.log(meta, "keywords meta");
   const inputRef = useRef(null);
@@ -38,7 +38,6 @@ const TagsField = ({ label, data, ...props }) => {
             <TextField
               helperText={meta.touched && meta.error ? `${meta.error}` : " "}
               label={field.name}
-              ref={inputRef}
               type="text"
               onKeyDown={(e) =>
                 e.key === "Enter"
@@ -46,16 +45,19 @@ const TagsField = ({ label, data, ...props }) => {
                   : e.key === "Tab"
                   ? (push({ name: e.target.value }), (e.target.value = ""))
                   : null
-              } // TODO : prevent default, add proper yup validation
+              }
             />
-            <Grid container spacing={1}>
+            <Button onClick={() => push(field.value)}>{"Add Day"}</Button>
+
+            <Grid container spacing={2}>
               {field.value.map((_, index) => (
-                <Grid item>
-                  <Chip
+                <Grid item xs={12}>
+                  <TextField
                     name={`${field.name}[${index}]`}
                     label={`${field.value[index].name}`}
                     onDelete={() => remove(index)}
                   />
+                  <Button onClick={() => remove(index)}>{"Remove Day"}</Button>
                 </Grid>
               ))}
             </Grid>
@@ -66,4 +68,4 @@ const TagsField = ({ label, data, ...props }) => {
   );
 };
 
-export default TagsField;
+export default SchoolDaysField;

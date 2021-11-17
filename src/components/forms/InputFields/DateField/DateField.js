@@ -30,9 +30,10 @@ const DateField = ({ label, handleBlur, ...props }) => {
           <TextField
             {...params}
             error={Boolean(meta.error)}
-            helperText={meta.error}
+            helperText={meta.touched && meta.error ? `${meta.error}` : " "}
             selected={field.value}
             onBlur={() => helpers.setTouched()}
+            fullWidth
           />
         )}
       />
