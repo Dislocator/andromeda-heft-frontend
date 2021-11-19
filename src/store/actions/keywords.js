@@ -5,14 +5,19 @@ export const keywordsAddStart = () => {
   };
 };
 
-export const keywordsAddSuccess = (action) => {
+export const keywordsAddSuccess = (keywords) => {
   return {
     type: actionTypes.KEYWORDS_UPDATE_SUCCESS,
-    keywords: action,
+    keywords: keywords,
   };
 };
 
-export const =
+export const keywordsAddFail = (error) => {
+  return {
+    type: actionTypes.KEYWORDS_UPDATE_FAIL,
+    error: error,
+  };
+};
 
 export const keywordsAdd = (keywords) => {
   return (dispatch) => {
@@ -22,9 +27,14 @@ export const keywordsAdd = (keywords) => {
       headers: { Authorization: `Bearer ${user.token}` },
     };
     let url = "http:4000/localhost/keywords";
-    axios.post(url, keywords, config).then((response) => {
+    axios
+      .post(url, keywords, config)
+      .then((response) => {
         dispatch(keywordsAddSuccess(responce.data));
         localstorage.setItem("user", response.data);
-    }).catch((error) => {dispatch(keywordsAddFail(error.response.data))});
+      })
+      .catch((error) => {
+        dispatch(keywordsAddFail(error.response.data));
+      });
   };
 };

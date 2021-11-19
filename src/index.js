@@ -4,10 +4,12 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import FormikContainer from "./components/forms/FormikContainer";
+import OfferCard from "./components/offerCard/OfferCard";
 
 ReactDOM.render(
   <React.StrictMode>
     <FormikContainer />
+    <OfferCard />
   </React.StrictMode>,
   document.getElementById("root")
 );
