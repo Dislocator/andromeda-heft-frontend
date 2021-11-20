@@ -1,1 +1,4 @@
 export const FETCH_USER_INFO = "FETCH_USER_INFO";
+
+export const OPEN_SIDEBAR = "TOGGLE_SIDEBAR";
+export const CLOSE_SIDEBAR = "CLOSE_SIDEBAR";

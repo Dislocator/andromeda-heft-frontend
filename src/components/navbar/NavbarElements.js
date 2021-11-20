@@ -6,7 +6,7 @@ import { theme } from "../../theme/theme";
 export const Nav = styled.div`
   background: ${({ theme }) => theme.palette.colors.background};
   height: 80px;
-  /* margin-top: -80px; */
+  margin-top: -80px;
   display: flex;
   justify-content: center;
   align-items: center;

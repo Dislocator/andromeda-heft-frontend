@@ -13,7 +13,7 @@ const initialState = {
   learningFinishDate: new Date(),
 };
 
-const generatorReducer = (state = initialState, action) => {
+const user = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_USER_INFO:
       return fetchUserInfo(state, action);
@@ -22,4 +22,4 @@ const generatorReducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default user;

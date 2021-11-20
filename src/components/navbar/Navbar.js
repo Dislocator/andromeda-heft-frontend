@@ -11,13 +11,20 @@ import {
   NavMenu,
 } from "./NavbarElements";
 import { FaBars } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import * as actions from "../../store/actions";
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const handleSidebar = () => {
+    console.log("nav");
+    dispatch(actions.openSidebar());
+  };
   return (
     <>
       <Nav>
         <NavbarContainer>
           <NavLogo to="/">Logo</NavLogo>
-          <MobileIcon>
+          <MobileIcon onClick={() => handleSidebar()}>
             <FaBars />
           </MobileIcon>
           <NavMenu>

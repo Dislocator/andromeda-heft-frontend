@@ -1,4 +1,7 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { toggleSidebar } from "../../store/actions";
 import {
   CloseIcon,
   Icon,
@@ -9,17 +12,28 @@ import {
   SidebarWrapper,
   SideBtnWrap,
 } from "./SidebarElements";
+import * as actions from "../../store/actions";
 
-const sidebar = () => {
+const Sidebar = () => {
+  const sidebar = useSelector((state) => state.ui.sidebar);
+  console.log(sidebar, "Sidebar");
+  const dispatch = useDispatch();
+  const handleSidebar = () => {
+    dispatch(actions.closeSidebar());
+  };
   return (
-    <SidebarContainer>
-      <Icon>
+    <SidebarContainer isOpen={sidebar} onClick={() => handleSidebar()}>
+      <Icon onClick={() => handleSidebar()}>
         <CloseIcon />
       </Icon>
       <SidebarWrapper>
         <SidebarMenu>
-          <SidebarLink to="about">About</SidebarLink>
-          <SidebarLink to="generator">Generator</SidebarLink>
+          <SidebarLink to="about" onClick={() => handleSidebar()}>
+            About
+          </SidebarLink>
+          <SidebarLink to="generator" onClick={() => handleSidebar()}>
+            Generator
+          </SidebarLink>
         </SidebarMenu>
         <SideBtnWrap>
           <SidebarRoute to="/signin">Sign in</SidebarRoute>
@@ -29,4 +43,4 @@ const sidebar = () => {
   );
 };
 
-export default sidebar;
+export default Sidebar;
