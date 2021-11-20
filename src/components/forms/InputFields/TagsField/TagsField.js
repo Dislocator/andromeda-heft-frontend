@@ -8,16 +8,19 @@ import {
 } from "@mui/material";
 import { Field, FieldArray, useField } from "formik";
 import React, { useRef } from "react";
-// import InputField from "../InputField/InputField";
+
 const TagsField = ({ label, data, ...props }) => {
   const [field, meta, helpers] = useField(props);
   console.log(meta, "keywords meta");
   const inputRef = useRef(null);
-  const handleSubmit = (event) => {
-    if (event.keyCode === 13) {
-      field.setValue([...field.value, event.target.value]);
+  const handleSubmit = (e, push) => {
+    if (e.key === "Enter") {
+      push({ name: e.target.value });
+      e.target.value = "";
+      e.preventDefault();
     }
   };
+
   return (
     <FieldArray
       label={label}
@@ -30,9 +33,6 @@ const TagsField = ({ label, data, ...props }) => {
         const { push, remove, form } = fieldArrayProps;
         const { values } = form;
         const { keywords } = values;
-        console.log(field, "field");
-
-        // console.log(inputRef.current.value, "ref");
         return (
           <div>
             <TextField
@@ -40,13 +40,7 @@ const TagsField = ({ label, data, ...props }) => {
               label={field.name}
               ref={inputRef}
               type="text"
-              onKeyDown={(e) =>
-                e.key === "Enter"
-                  ? (push({ name: e.target.value }), (e.target.value = ""))
-                  : e.key === "Tab"
-                  ? (push({ name: e.target.value }), (e.target.value = ""))
-                  : null
-              } // TODO : prevent default, add proper yup validation
+              onKeyPress={(e) => handleSubmit(e, push)}
             />
             <Grid container spacing={1}>
               {field.value.map((_, index) => (

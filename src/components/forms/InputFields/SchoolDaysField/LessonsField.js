@@ -9,9 +9,10 @@ import {
 import { Field, FieldArray, useField } from "formik";
 import React, { useRef } from "react";
 // import InputField from "../InputField/InputField";
-const SchoolDaysField = ({ label, data, ...props }) => {
+const LessonsField = ({ label, data, ...props }) => {
+  console.log(label, "label");
   const [field, meta, helpers] = useField(props);
-  console.log(field, "field");
+  console.log(meta, "keywords meta");
   const inputRef = useRef(null);
   const handleSubmit = (event) => {
     if (event.keyCode === 13) {
@@ -36,32 +37,31 @@ const SchoolDaysField = ({ label, data, ...props }) => {
         return (
           <div>
             {/* <TextField
-              helperText={meta.touched && meta.error ? `${meta.error}` : " "}
-              label={field.name}
-              type="text"
-              onKeyDown={(e) =>
-                e.key === "Enter"
-                  ? (push({ name: e.target.value }), (e.target.value = ""))
-                  : e.key === "Tab"
-                  ? (push({ name: e.target.value }), (e.target.value = ""))
-                  : null
-              }
-            /> */}
+                helperText={meta.touched && meta.error ? `${meta.error}` : " "}
+                label={field.name}
+                type="text"
+                onKeyDown={(e) =>
+                  e.key === "Enter"
+                    ? (push({ name: e.target.value }), (e.target.value = ""))
+                    : e.key === "Tab"
+                    ? (push({ name: e.target.value }), (e.target.value = ""))
+                    : null
+                }
+              /> */}
 
             {/* <Button onClick={() => push(field.value)}>{"Add Day"}</Button> */}
 
             <Grid container spacing={2}>
               <Grid item xs={12} spacing={2}>
-                <Button onClick={() => push(field.value)}>{"Add day"}</Button>
+                <Button onClick={() => push()}>{"Add lesson"}</Button>
               </Grid>
               {field.value.map((_, index) => (
                 <>
                   <Grid item xs={5}>
                     <TextField
                       fullWidth
-                      name={`${field.name[index].day}`}
-                      label={`${label.day}`}
-                      // value={`${field.value[index].day}`}
+                      name={`${field.name}[${index}].day`}
+                      label={label.name}
                       // onDelete={() => remove(index)}
                     />
                   </Grid>
@@ -69,8 +69,7 @@ const SchoolDaysField = ({ label, data, ...props }) => {
                     <TextField
                       fullWidth
                       name={`${field.name}[${index}].quantity`}
-                      label={`${label.frequency}`}
-                      // value={`${field.value[index].quantity}`}
+                      label={label.shortage}
                       // onDelete={() => remove(index)}
                     />
                   </Grid>
@@ -80,7 +79,7 @@ const SchoolDaysField = ({ label, data, ...props }) => {
                     style={{ display: "flex", alignItems: "center" }}
                   >
                     <Button onClick={() => remove(index)}>
-                      {"remove day"}
+                      {"Remove Lesson"}
                     </Button>
                   </Grid>
                 </>
@@ -93,4 +92,4 @@ const SchoolDaysField = ({ label, data, ...props }) => {
   );
 };
 
-export default SchoolDaysField;
+export default LessonsField;

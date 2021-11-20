@@ -4,6 +4,7 @@ import InputField from "./InputFields/InputField/InputField";
 import DateField from "./InputFields/DateField/DateField";
 import TagsField from "./InputFields/TagsField/TagsField";
 import SchoolDaysField from "./InputFields/SchoolDaysField/SchoolDaysField";
+import LessonsField from "./InputFields/SchoolDaysField/LessonsField";
 // import DatePicker from "./InputFields/DatePicker/DatePicker";
 
 const FormikControl = (props) => {
@@ -17,6 +18,8 @@ const FormikControl = (props) => {
     case "checkbox":
     case "date":
       return <DateField {...args} />;
+    case "lessons":
+      return <LessonsField {...args} />;
     case "tags":
       return <TagsField {...args} />;
     case "schoolDays":

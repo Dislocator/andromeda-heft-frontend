@@ -17,7 +17,7 @@ const FormikContainer = () => {
     subjects: [],
     learningStartDate: new Date(),
     learningFinishDate: new Date(),
-    schoolDays: [],
+    schoolDays: [{ day: "monday", quantity: 1 }],
   };
   const validationSchemaPersonal = yup.object({
     learningStartDate: yup
@@ -91,11 +91,22 @@ const FormikContainer = () => {
           <FormikControl control="tags" label="Keywords" name="keywords" />
         </FormStep>
         <FormStep stepName="School" validationSchema={validationSchemaSchool}>
-          <FormikControl
-            control="schoolDays"
-            label="School Day"
-            name="schoolDays"
-          />
+          <Grid container>
+            <Grid item xs={6}>
+              <FormikControl
+                control="schoolDays"
+                label={{ day: "Week Day", frequency: "Every 'n' weeks" }}
+                name="schoolDays"
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <FormikControl
+                control="lessons"
+                label={{ name: "Lesson", shortage: "shortage" }}
+                name="subjects"
+              />
+            </Grid>
+          </Grid>
         </FormStep>
       </MultistepForm>
     </Paper>

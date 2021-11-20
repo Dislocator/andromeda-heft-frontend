@@ -4,11 +4,17 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import FormikContainer from "./components/forms/FormikContainer";
+import { Nav } from "./components/navbar/NavbarElements";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./theme/theme";
+import Navbar from "./components/navbar/Navbar";
+import Layout from "./components/Layout";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <FormikContainer />
-  </React.StrictMode>,
+  <ThemeProvider theme={theme}>
+    <Layout />
+    {/* <FormikContainer /> */}
+  </ThemeProvider>,
   document.getElementById("root")
 );
 
