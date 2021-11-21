@@ -37,6 +37,7 @@ export const theme = {
       darkBg: "#010606",
       lightText: "#f7f8fa",
       darkText: "#010606",
+      darkBgAlt: "#101522",
     },
   },
   borderRadius: "50px",

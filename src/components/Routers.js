@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Landing from "../pages/landing/Landing";
 import Login from "../pages/login/Login";
+import Footer from "./footer/Footer";
 import Navbar from "./navbar/Navbar";
 import Sidebar from "./sidebar/Sidebar";
 
@@ -12,6 +13,7 @@ const DefaultContainer = () => (
     <Navbar />
     <Sidebar />
     <Route path="/" component={Landing} />
+    <Footer />
   </>
 );
 
