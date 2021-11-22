@@ -4,7 +4,8 @@ import styled from "styled-components";
 import { theme } from "../../theme/theme";
 
 export const Nav = styled.div`
-  background: ${({ theme }) => theme.palette.colors.background};
+  background: ${({ theme, scrollNav }) =>
+    scrollNav ? theme.palette.colors.background : "transparent"};
   height: 80px;
   margin-top: -80px;
   display: flex;
@@ -80,7 +81,7 @@ export const NavLinks = styled(LinkS)`
   height: 100%;
   cursor: pointer;
 
-  &:hover {
+  &.active {
     border-bottom: 3px solid
       ${({ theme }) => theme.palette.colors.primary.primary50};
   }

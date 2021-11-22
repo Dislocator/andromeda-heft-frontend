@@ -1,5 +1,6 @@
 import React from "react";
 import { FaFacebook, FaGithub, FaInstagram, FaPatreon } from "react-icons/fa";
+import { animateScroll as scroll } from "react-scroll";
 import {
   FooterContainer,
   FooterLink,
@@ -15,8 +16,10 @@ import {
   SocialMediaWrap,
   WebsiteRights,
 } from "./FooterElements";
-
 const Footer = () => {
+  const toggleHome = () => {
+    scroll.scrollToTop();
+  };
   return (
     <FooterContainer>
       <FooterWrap>
@@ -40,7 +43,9 @@ const Footer = () => {
         </FooterLinksContainer>
         <SocialMediaContainer>
           <SocialMediaWrap>
-            <SocialLogo to="/">Andromeda </SocialLogo>
+            <SocialLogo to="/" onClick={toggleHome}>
+              Andromeda
+            </SocialLogo>
             <WebsiteRights>Andromeda © {new Date().getFullYear} </WebsiteRights>
             <SocialIcons>
               <SocialIconLink

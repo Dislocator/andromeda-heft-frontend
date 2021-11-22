@@ -5,14 +5,20 @@ import Login from "../pages/login/Login";
 import Footer from "./footer/Footer";
 import Navbar from "./navbar/Navbar";
 import Sidebar from "./sidebar/Sidebar";
-
-const LoginContainer = () => <Route exact path="/login" component={Login} />;
+import BhGenerator from "../pages/generator/BhGenerator";
+const LoginContainer = () => (
+  <>
+    <Route exact path="/generator" component={BhGenerator} />
+    <Route exact path="/login" component={Login} />
+  </>
+);
 
 const DefaultContainer = () => (
   <>
     <Navbar />
     <Sidebar />
     <Route path="/" component={Landing} />
+
     <Footer />
   </>
 );
@@ -22,6 +28,7 @@ const Routers = () => {
     <Router>
       <Switch>
         <Route exact path="/login" component={LoginContainer} />
+        <Route exact path="/generator" component={LoginContainer} />
         <Route component={DefaultContainer} />
       </Switch>
     </Router>

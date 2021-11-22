@@ -40,6 +40,7 @@ const TagsField = ({ label, data, ...props }) => {
               label={field.name}
               ref={inputRef}
               type="text"
+              fullWidth
               onKeyPress={(e) => handleSubmit(e, push)}
             />
             <Grid container spacing={1}>

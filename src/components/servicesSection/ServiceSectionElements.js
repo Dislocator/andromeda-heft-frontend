@@ -5,8 +5,8 @@ export const ServicesContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: ${({ theme }) => theme.palette.colors.darkBg};
   justify-content: center;
+  background: ${({ theme }) => theme.palette.colors.darkBg};
   @media screen and (max-width: 1024px) {
     height: 1300px;
   }

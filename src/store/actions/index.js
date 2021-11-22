@@ -1,1 +1,1 @@
-export { openSidebar, closeSidebar } from "./ui";
+export { openSidebar, closeSidebar, openGeneratorForm } from "./ui";

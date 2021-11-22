@@ -11,3 +11,9 @@ export const closeSidebar = () => {
     type: actionTypes.CLOSE_SIDEBAR,
   };
 };
+
+export const openGeneratorForm = () => {
+  return {
+    type: actionTypes.OPEN_GENERATOR_FORM,
+  };
+};

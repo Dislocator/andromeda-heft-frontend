@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import GeneratorFormSection from "../../components/generatorFormSection/GeneratorFormSection";
 import HeroSection from "../../components/heroSection/HeroSection";
 import InfoSection from "../../components/infoSection/InfoSection";
 import ServiceSection from "../../components/servicesSection/ServiceSection";
@@ -13,6 +14,7 @@ const Landing = () => {
       {infoObjects.map((infoSection, index) => (
         <InfoSection {...infoSection} key={index} />
       ))}
+      <GeneratorFormSection />
       <ServiceSection />
     </div>
   );

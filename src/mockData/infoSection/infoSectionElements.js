@@ -16,7 +16,7 @@ export const infoObjects = [
     darkText: false,
   },
   {
-    id: "info",
+    id: "generator",
     lightBg: true,
     lightText: false,
     lightTextDesc: false,
